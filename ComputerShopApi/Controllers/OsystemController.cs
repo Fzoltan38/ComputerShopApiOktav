@@ -9,10 +9,10 @@ namespace ComputerShopApi.Controllers
     [ApiController]
     public class OsystemController : ControllerBase
     {
-        public ComputershopoktavContext context = new ComputershopoktavContext(); 
+        public ComputershopoktavContext context = new ComputershopoktavContext();
 
         [HttpPost("newOsystem")]
-        public object AddNewOsystem([FromBody]AddNewOsystemDto addNewOsystemDto)
+        public object AddNewOsystem([FromBody] AddNewOsystemDto addNewOsystemDto)
         {
             var osystem = new Osystem
             {
@@ -28,7 +28,7 @@ namespace ComputerShopApi.Controllers
                 context.Osystems.Add(osystem);
                 context.SaveChanges();
 
-                return StatusCode(201, new {message = "Sikeres felvétel" , result = osystem});
+                return StatusCode(201, new { message = "Sikeres felvétel", result = osystem });
             }
 
             return StatusCode(400, new { message = "Sikertelen felvétel", result = osystem });
@@ -45,6 +45,19 @@ namespace ComputerShopApi.Controllers
             }
 
             return StatusCode(404, new { message = "Üres tábla", result = osystems });
+        }
+
+        [HttpGet("osysytemById")]
+        public object OsysytemById([FromQuery]Guid id)
+        {
+            var osystem = context.Osystems.SingleOrDefault(o => o.Id == id);
+
+            if (osystem != null)
+            {
+                return StatusCode(200, new { message = "Sikeres lekérdezés", result = osystem });
+            }
+
+            return StatusCode(404, new { message = "Nincs ilyen Id-vel osystem.", result = osystem });
         }
     }
 }
