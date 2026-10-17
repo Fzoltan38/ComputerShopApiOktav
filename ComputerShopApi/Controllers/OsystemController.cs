@@ -78,5 +78,21 @@ namespace ComputerShopApi.Controllers
             }
             return StatusCode(404, new { message = "Nincs ilyen Id-vel osystem.", result = osystem });
         }
+
+        [HttpDelete("deleteOsystem")]
+        public object DeleteOsystem([FromQuery]Guid id)
+        {
+            var osystem = context.Osystems.FirstOrDefault(o => o.Id == id);
+
+            if (osystem != null)
+            {
+                context.Osystems.Remove(osystem);
+                context.SaveChanges();
+
+                return StatusCode(204);
+            }
+
+            return StatusCode(404, new { message = "Nincs ilyen Id-vel osystem."});
+        }
     }
 }
