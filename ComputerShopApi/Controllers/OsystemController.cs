@@ -59,5 +59,24 @@ namespace ComputerShopApi.Controllers
 
             return StatusCode(404, new { message = "Nincs ilyen Id-vel osystem.", result = osystem });
         }
+
+        [HttpPut("updateOsystem")]
+        public object UpdateOsystem([FromQuery]Guid id, [FromBody]UpdateOsystemDto updateOsystemDto)
+        {
+            var osystem = context.Osystems.Find(id);
+
+            if (osystem != null)
+            {
+                osystem.Name = updateOsystemDto.Name;
+                osystem.Version = updateOsystemDto.Version;
+                osystem.UpdateTime = DateTime.Now;
+
+                context.Osystems.Update(osystem);
+                context.SaveChanges();
+
+                return StatusCode(200, new { message = "Sikeres frissítés", result = osystem });
+            }
+            return StatusCode(404, new { message = "Nincs ilyen Id-vel osystem.", result = osystem });
+        }
     }
 }
