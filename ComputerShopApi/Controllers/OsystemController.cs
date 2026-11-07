@@ -2,6 +2,7 @@
 using ComputerShopApi.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ComputerShopApi.Controllers
 {
@@ -93,6 +94,17 @@ namespace ComputerShopApi.Controllers
             }
 
             return StatusCode(404, new { message = "Nincs ilyen Id-vel osystem."});
+        }
+
+        //Több táblás lekérdezések
+        //Lekérdezi az összes op. rendszert a hozzájuk tartozó számítógépekkel
+
+        [HttpGet("osystemWithComputers")]
+        public object OsystemWithComputers()
+        {
+            var osystems = context.Osystems.Include(o => o.Computers).ToList();
+
+            return StatusCode(200,osystems);
         }
     }
 }
