@@ -133,6 +133,18 @@
         }
       }
     },
+    "/computers/computerWithOs": {
+      "get": {
+        "tags": [
+          "Computer"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/osystems/newOsystem": {
       "post": {
         "tags": [

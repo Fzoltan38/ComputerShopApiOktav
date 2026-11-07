@@ -27,6 +27,16 @@
   },
   {
     "ContainingType": "ComputerShopApi.Controllers.ComputerController",
+    "Method": "ComputerWithOs",
+    "RelativePath": "computers/computerWithOs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputerShopApi.Controllers.ComputerController",
     "Method": "DeleteComputer",
     "RelativePath": "computers/deleteComputer",
     "HttpMethod": "DELETE",
