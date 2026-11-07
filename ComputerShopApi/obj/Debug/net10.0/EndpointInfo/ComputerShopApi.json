@@ -145,6 +145,27 @@
         }
       }
     },
+    "/computers/computersByOsName": {
+      "get": {
+        "tags": [
+          "Computer"
+        ],
+        "parameters": [
+          {
+            "name": "osName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/osystems/newOsystem": {
       "post": {
         "tags": [

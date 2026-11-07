@@ -127,5 +127,28 @@ namespace ComputerShopApi.Controllers
 
             return StatusCode(404, new { message = "Üres tábla", result = computers });
         }
+
+        [HttpGet("computersByOsName")]
+        public object ComputersByOsName([FromQuery] string osName)
+        {
+            var computers = context.Computers
+                .Where(c => c.Os.Name == osName)
+                .Select(c => new
+                {
+                    c.Id,
+                    c.Brand,
+                    c.Type,
+                    c.Os.Name,
+                    c.Os.Version
+                })
+                .ToList();
+
+            if (computers.Count > 0)
+            {
+                return StatusCode(200, new { message = "Lekérdzve", result = computers });
+            }
+
+            return StatusCode(404, new { message = "Üres tábla", result = computers });
+        }
     }
 }

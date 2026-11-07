@@ -27,6 +27,22 @@
   },
   {
     "ContainingType": "ComputerShopApi.Controllers.ComputerController",
+    "Method": "ComputersByOsName",
+    "RelativePath": "computers/computersByOsName",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "osName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputerShopApi.Controllers.ComputerController",
     "Method": "ComputerWithOs",
     "RelativePath": "computers/computerWithOs",
     "HttpMethod": "GET",
