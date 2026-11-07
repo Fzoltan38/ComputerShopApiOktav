@@ -59,6 +59,16 @@
   },
   {
     "ContainingType": "ComputerShopApi.Controllers.ComputerController",
+    "Method": "ComputersGroupsByBrand",
+    "RelativePath": "computers/computersGroupsByBrand",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputerShopApi.Controllers.ComputerController",
     "Method": "ComputerWithOs",
     "RelativePath": "computers/computerWithOs",
     "HttpMethod": "GET",

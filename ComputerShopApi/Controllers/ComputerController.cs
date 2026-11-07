@@ -13,7 +13,7 @@ namespace ComputerShopApi.Controllers
 
 
         [HttpPost("newComputer")]
-        public object AddNewComputer([FromBody]AddNewComputerDto addNewComputerDto)
+        public object AddNewComputer([FromBody] AddNewComputerDto addNewComputerDto)
         {
             var computer = new Computer
             {
@@ -109,7 +109,7 @@ namespace ComputerShopApi.Controllers
                 context.Osystems,
                 c => c.OsId,
                 o => o.Id,
-                (c,o) => new {
+                (c, o) => new {
                     c.Id,
                     c.Brand,
                     c.Type,
@@ -159,7 +159,7 @@ namespace ComputerShopApi.Controllers
                     context.Osystems,
                     c => c.OsId,
                     o => o.Id,
-                    (c,o) => new 
+                    (c, o) => new
                     {
                         c.Id,
                         c.Brand,
@@ -180,5 +180,29 @@ namespace ComputerShopApi.Controllers
 
             return StatusCode(404, new { message = "Üres eredmény", result = computers });
         }
-    }
+
+        [HttpGet("computersGroupsByBrand")]
+        public object ComputersGroupsByBrand()
+        {
+            var groups = context.Computers
+                .GroupBy(c => c.Brand)
+                .Select(g => new
+                {
+                    Brand = g.Key,
+                    ComputerCount = g.Count(),
+                    ToalMemory = g.Sum(c => c.Memory),
+                    AvgDisplay = g.Average(c => c.Displyay)
+                })
+                .OrderBy(c => c.ComputerCount)
+                .ToList();
+
+            if (groups.Count > 0)
+            {
+                return StatusCode(200, new { message = "Sikeres lekérdeés", result = groups });
+            }
+
+            return StatusCode(404, new { message = "Üres eredmény", result = groups });
+
+        }
+    } 
 }
