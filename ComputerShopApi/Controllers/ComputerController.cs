@@ -84,5 +84,21 @@ namespace ComputerShopApi.Controllers
             }
             return StatusCode(404, new { message = "Nincs ilyen Id-vel computer.", result = computer });
         }
+
+        [HttpDelete("deleteComputer")]
+        public object DeleteComputer([FromQuery] Guid id)
+        {
+            var computer = context.Computers.FirstOrDefault(c => c.Id == id);
+
+            if (computer != null)
+            {
+                context.Computers.Remove(computer);
+                context.SaveChanges();
+
+                return StatusCode(204);
+            }
+
+            return StatusCode(404, new { message = "Nincs ilyen Id-vel computer." });
+        }
     }
 }
