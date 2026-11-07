@@ -2,7 +2,7 @@
 -- 54 db osystems és 60 db computers rekord
 -- Sorrend: előbb az osystems (szülő), utána a computers (gyermek, FK: OsId)
 
-USE `computershopoktav`;
+USE `computershop`;
 
 START TRANSACTION;
 
