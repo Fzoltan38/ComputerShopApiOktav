@@ -150,5 +150,35 @@ namespace ComputerShopApi.Controllers
 
             return StatusCode(404, new { message = "Üres tábla", result = computers });
         }
+
+        [HttpGet("computersByMinMemory")]
+        public object ComputersByMinMemory([FromQuery] int minMemory)
+        {
+            var computers = context.Computers
+                .Join(
+                    context.Osystems,
+                    c => c.OsId,
+                    o => o.Id,
+                    (c,o) => new 
+                    {
+                        c.Id,
+                        c.Brand,
+                        c.Type,
+                        c.Memory,
+                        o.Name
+                    }
+                )
+                .Where(c => c.Memory >= minMemory)
+                .OrderByDescending(c => c.Memory)
+                .ToList()
+                ;
+
+            if (computers.Count > 0)
+            {
+                return StatusCode(200, new { message = "Lekérdzve", result = computers });
+            }
+
+            return StatusCode(404, new { message = "Üres eredmény", result = computers });
+        }
     }
 }
