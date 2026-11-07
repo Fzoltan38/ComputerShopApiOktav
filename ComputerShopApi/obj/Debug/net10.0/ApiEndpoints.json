@@ -142,6 +142,16 @@
   },
   {
     "ContainingType": "ComputerShopApi.Controllers.OsystemController",
+    "Method": "OsystemWithoutComputer",
+    "RelativePath": "osystems/osystemWithoutComputer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputerShopApi.Controllers.OsystemController",
     "Method": "OsysytemById",
     "RelativePath": "osystems/osysytemById",
     "HttpMethod": "GET",
