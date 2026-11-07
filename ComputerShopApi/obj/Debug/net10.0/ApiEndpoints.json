@@ -122,6 +122,27 @@
   },
   {
     "ContainingType": "ComputerShopApi.Controllers.OsystemController",
+    "Method": "OsystemByBrand",
+    "RelativePath": "osystems/osystemByBrand",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "brand",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "display",
+        "Type": "System.Single",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputerShopApi.Controllers.OsystemController",
     "Method": "OsystemComputerCount",
     "RelativePath": "osystems/osystemComputerCount",
     "HttpMethod": "GET",

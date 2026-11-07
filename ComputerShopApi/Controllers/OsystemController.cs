@@ -3,6 +3,7 @@ using ComputerShopApi.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace ComputerShopApi.Controllers
 {
@@ -152,7 +153,7 @@ namespace ComputerShopApi.Controllers
         public object OsystemWithoutComputer()
         {
             var osystems = context.Osystems
-                .Where(o => o.Computers.Any())
+                .Where(o => !o.Computers.Any())
                 .Select(o => new 
                 { 
                     o.Id,
@@ -167,6 +168,29 @@ namespace ComputerShopApi.Controllers
             }
 
             return StatusCode(404, new { message = "Üres eredmény", result = osystems });
+        }
+
+        [HttpGet("osystemByBrand")]
+        public object OsystemByBrand([FromQuery]string brand, [FromQuery]float display)
+        {
+            var osystems = context.Osystems
+                .Where(o => o.Computers.Any(c => c.Brand == brand && c.Displyay == display))
+                .Select(o => new 
+                {
+                    o.Id,
+                    o.Name,
+                    o.Version,
+                    BrandCount = o.Computers.Count(c => c.Brand == brand && c.Displyay == display)
+                })
+                .ToList();
+
+            if (osystems.Count > 0)
+            {
+                return StatusCode(200, new { message = "Lekérdzve", result = osystems });
+            }
+
+            return StatusCode(404, new { message = "Üres eredmény", result = osystems });
+
         }
     }
 }
