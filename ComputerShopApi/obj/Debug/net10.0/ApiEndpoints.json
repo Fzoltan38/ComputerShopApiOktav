@@ -42,6 +42,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ComputerShopApi.Controllers.ComputerController",
+    "Method": "UpdateComputer",
+    "RelativePath": "computers/updateComputer",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "updateComputerDto",
+        "Type": "ComputerShopApi.Models.DTOs.UpdateComputerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ComputerShopApi.Controllers.OsystemController",
     "Method": "AllOsystem",
     "RelativePath": "osystems/allOsystem",

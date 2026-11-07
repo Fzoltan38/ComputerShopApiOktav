@@ -64,6 +64,25 @@ namespace ComputerShopApi.Controllers
             return StatusCode(404, new { message = "Nincs ilyen Id-vel computer.", result = computer });
         }
 
+        [HttpPut("updateComputer")]
+        public object UpdateComputer([FromQuery] Guid id, [FromBody] UpdateComputerDto updateComputerDto)
+        {
+            var computer = context.Computers.Find(id);
 
+            if (computer != null)
+            {
+                computer.Brand = updateComputerDto.Brand;
+                computer.Type = updateComputerDto.Type;
+                computer.Displyay = updateComputerDto.Displyay;
+                computer.Memory = updateComputerDto.Memory;
+                computer.OsId = updateComputerDto.OsId;
+
+                context.Computers.Update(computer);
+                context.SaveChanges();
+
+                return StatusCode(200, new { message = "Sikeres frissítés", result = computer });
+            }
+            return StatusCode(404, new { message = "Nincs ilyen Id-vel computer.", result = computer });
+        }
     }
 }
