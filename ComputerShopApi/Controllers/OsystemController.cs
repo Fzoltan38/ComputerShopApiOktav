@@ -125,7 +125,27 @@ namespace ComputerShopApi.Controllers
             }
 
             return StatusCode(404, new { message = "Üres tábla", result = osystems });
+        }
 
+        [HttpGet("osystemComputerCount")]
+        public object OsystemComputerCount()
+        {
+            var osystems = context.Osystems
+                .Select(o => new 
+                {
+                    o.Name,
+                    o.Version,
+                    ComputerCount = o.Computers.Count()
+                })
+                .OrderByDescending(c => c.ComputerCount)
+                .ToList();
+
+            if (osystems.Count > 0)
+            {
+                return StatusCode(200, new { message = "Lekérdzve", result = osystems });
+            }
+
+            return StatusCode(404, new { message = "Üres tábla", result = osystems });
         }
     }
 }

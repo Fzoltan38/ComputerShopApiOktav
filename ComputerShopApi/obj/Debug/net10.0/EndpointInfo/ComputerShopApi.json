@@ -272,6 +272,18 @@
           }
         }
       }
+    },
+    "/osystems/osystemComputerCount": {
+      "get": {
+        "tags": [
+          "Osystem"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
