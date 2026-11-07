@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "ComputerShopApi.Controllers.ComputerController",
+    "Method": "AddNewComputer",
+    "RelativePath": "computers/newComputer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addNewComputerDto",
+        "Type": "ComputerShopApi.Models.DTOs.AddNewComputerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ComputerShopApi.Controllers.OsystemController",
     "Method": "AllOsystem",
     "RelativePath": "osystems/allOsystem",

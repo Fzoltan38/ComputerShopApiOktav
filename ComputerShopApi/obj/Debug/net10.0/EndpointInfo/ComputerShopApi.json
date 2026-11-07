@@ -5,6 +5,37 @@
     "version": "1.0"
   },
   "paths": {
+    "/computers/newComputer": {
+      "post": {
+        "tags": [
+          "Computer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewComputerDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewComputerDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewComputerDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/osystems/newOsystem": {
       "post": {
         "tags": [
@@ -136,6 +167,32 @@
   },
   "components": {
     "schemas": {
+      "AddNewComputerDto": {
+        "type": "object",
+        "properties": {
+          "brand": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "displyay": {
+            "type": "number",
+            "format": "float"
+          },
+          "memory": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "osId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
       "AddNewOsystemDto": {
         "type": "object",
         "properties": {
@@ -167,6 +224,9 @@
     }
   },
   "tags": [
+    {
+      "name": "Computer"
+    },
     {
       "name": "Osystem"
     }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ComputerShopApi.Models
 {
@@ -19,6 +20,10 @@ namespace ComputerShopApi.Models
         public float Displyay { get; set; }
         public int Memory {  get; set; }
         public DateTime CreatedTime { get; set; }
+
+        [JsonIgnore]
+        public Osystem Os { get; set; }
+        public Guid OsId { get; set; }
 
     }
 }
