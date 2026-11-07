@@ -102,9 +102,30 @@ namespace ComputerShopApi.Controllers
         [HttpGet("osystemWithComputers")]
         public object OsystemWithComputers()
         {
-            var osystems = context.Osystems.Include(o => o.Computers).ToList();
+            //var osystems = context.Osystems.Include(o => o.Computers).ToList();
 
-            return StatusCode(200,osystems);
+            var osystems = context.Osystems
+                .Select(o => new 
+                {
+                    o.Id,
+                    o.Name,
+                    o.Version,
+                    Computers = o.Computers.Select(c => new 
+                    { 
+                        c.Id,
+                        c.Brand,
+                        c.Type
+                    })
+                
+                }).ToList();
+
+            if (osystems.Count > 0)
+            {
+                return StatusCode(200, new {message = "Lekérdzve" , result = osystems});
+            }
+
+            return StatusCode(404, new { message = "Üres tábla", result = osystems });
+
         }
     }
 }
