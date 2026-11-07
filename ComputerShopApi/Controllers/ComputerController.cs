@@ -38,5 +38,32 @@ namespace ComputerShopApi.Controllers
         }
 
 
+        [HttpGet("allComputer")]
+        public object AllComputer()
+        {
+            var computer = context.Computers.ToList();
+
+            if (computer.Count > 0)
+            {
+                return StatusCode(200, new { message = "Sikeres lekérdezés", result = computer });
+            }
+
+            return StatusCode(404, new { message = "Üres tábla", result = computer });
+        }
+
+        [HttpGet("computerById")]
+        public object ComputerById([FromQuery] Guid id)
+        {
+            var computer = context.Computers.SingleOrDefault(c => c.Id == id);
+
+            if (computer != null)
+            {
+                return StatusCode(200, new { message = "Sikeres lekérdezés", result = computer });
+            }
+
+            return StatusCode(404, new { message = "Nincs ilyen Id-vel computer.", result = computer });
+        }
+
+
     }
 }

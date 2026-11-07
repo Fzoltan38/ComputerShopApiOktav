@@ -64,7 +64,7 @@ INSERT INTO `osystems` (`Id`, `Name`, `Version`, `RegisterTime`, `UpdateTime`) V
 ('968e485e-46db-43ab-9044-df5c81b2499e', 'Oracle Linux', 9, '2024-10-15 03:45:42.677321', '2026-02-16 13:25:33.788805');
 
 -- computers tesztadatok
-INSERT INTO `computers` (`Id`, `Brand`, `Type`, `Displyay`, `Memory`, `CreatedTime`, `OsId`) VALUES
+INSERT INTO `computers` (`Id`, `Brand`, `Type`, `Display`, `Memory`, `CreatedTime`, `OsId`) VALUES
 ('ddd284e8-6961-4452-838d-04fb1018d7f5', 'Dell', 'Inspiron', 15.6, 8, '2025-08-13 06:36:48.603568', 'f3f49249-dc28-4f90-a5ae-c7978306d03b'),
 ('1807dfaf-1f7e-4273-8f56-d48f05e1ddfb', 'Acer', 'Predator', 11.6, 4, '2024-11-05 06:29:33.173717', '6bad6be2-8e7a-46e9-9f19-950499dd251d'),
 ('09bb1454-9d7a-41cb-b6d6-e11fa79b8a2e', 'Huawei', 'MateBook X', 15.6, 32, '2026-10-04 08:55:34.230544', 'c5e818fa-c043-4cbd-bdab-e929c4a334bf'),
